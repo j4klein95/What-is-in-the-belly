@@ -98,6 +98,17 @@ def samples_id_values(sample):
         }
     ]
     """
+    q = session.execute("SELECT otu_id, "+sample+" FROM samples ORDER BY "+sample+" DESC")
+    b = list(q)
+    sample_list = []
+    otu_id_list = []
+    sample_value_list = []
+    for i in range(0, len(b)):
+        otu_id_list.append(b[i][0])
+        sample_value_list.append(b[i][1])
+    nested_dict = {'otu_ids': otu_id_list, 'sample_values': sample_value_list}
+    sample_list.append(nested_dict)
+    return jsonify(sample_list)
 
 if __name__ == '__main__':
     app.run(debug=True)

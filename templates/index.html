@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <title>Belly Button Dashboard</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 
 <body>
@@ -17,7 +18,8 @@
   <!-- The location of the pie chart, top left -->
     <div class="container">
       <div class="row">
-        <div class="col">
+        <div class="col" id="pie">
+          <select id='selDataset' onchange="optionChanged(this.value)"></select>
           pie chart
         </div>
         <!-- holder location for gauge chart, not necessary for assignment, but for future -->
@@ -32,4 +34,6 @@
         </div>
       </div>
     </div>
+  </body>
+  <!--script src="index.js"></script-->
 </html>
