@@ -7,7 +7,7 @@ function unpack(rows, index) {
   });
 }
 
-function plotPie(){
+function optionPie(){
   Plotly.d3.json('/names', function(error, response) {
     for (i=0; i < response.length; i++){
       var selDataset = document.getElementById('selDataset');
@@ -18,6 +18,18 @@ function plotPie(){
       selDataset.append(option);
     }
   })
-  Plotly.d3.json('')
-
 };
+
+function get_pie_data(sampleID) {
+  Plotly.d3.json('/samples/'+ sampleID, function(error, response) {
+    if (error) return console.warn(error);
+    var sample_values_array = [];
+    var otu_id_array = [];
+    for (i=0; i<10; i++) {
+      sample_values_array.push(response.otu_ids[i]);
+      sample_values_array.push(response.sample_values[i]);
+    }
+  })
+};
+
+function build_pie_chart()
